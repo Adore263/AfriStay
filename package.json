@@ -1,0 +1,37 @@
+{
+  "name": "afristay-india",
+  "version": "1.0.0",
+  "description": "Modern student accommodation marketplace for African and international students in India",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:api": "cd apps/api && npm run dev",
+    "build": "npm run build:api && npm run build:web",
+    "build:web": "cd apps/web && npm run build",
+    "build:api": "cd apps/api && npm run build",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "test": "jest",
+    "migrate": "cd apps/api && npx prisma migrate dev",
+    "migrate:prod": "cd apps/api && npx prisma migrate deploy",
+    "studio": "cd apps/api && npx prisma studio",
+    "seed": "cd apps/api && npx ts-node prisma/seed.ts"
+  },
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "packages/types",
+    "packages/utils"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0"
+  }
+}
